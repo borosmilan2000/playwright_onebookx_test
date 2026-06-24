@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    
+    "auth:setup": "npx playwright test tests/auth/setup.spec.ts --headed --timeout=120000",
+    "auth:setup:auto": "npx playwright test tests/auth/setup-auto.spec.ts --headed --timeout=120000",
+    "auth:clear": "node -e \"const fs=require('fs'); try { fs.rmSync('playwright/.auth/storageState.json', {force: true}); console.log('✅ Auth cleared'); } catch(e) { console.log('No auth file found'); }\"",
+    "auth:check": "node -e \"const fs=require('fs'); console.log(fs.existsSync('playwright/.auth/storageState.json') ? '✅ Auth exists' : '❌ No auth found')\""
+  }
+}
